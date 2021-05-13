@@ -16,7 +16,7 @@ public class Pokemon {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name",unique = true)
     private String name;
 
     @Column(name = "level")
@@ -83,14 +83,6 @@ public class Pokemon {
         this.description = description;
     }
 
-    public Pokemon getPokemonStarter() {
-        return pokemonStarter;
-    }
-
-    public void setPokemonStarter(Pokemon pokemonStarter) {
-        this.pokemonStarter = pokemonStarter;
-    }
-
     public Pokemon getPokemonEvolution() {
         return pokemonEvolution;
     }
@@ -99,11 +91,35 @@ public class Pokemon {
         this.pokemonEvolution = pokemonEvolution;
     }
 
+    public Pokemon getPokemonStarter() {
+        return pokemonStarter;
+    }
+
+    public void setPokemonStarter(Pokemon pokemonStarter) {
+        this.pokemonStarter = pokemonStarter;
+    }
+
     public Set<UserPokemon> getUserPokemons() {
         return userPokemons;
     }
 
     public void setUserPokemons(Set<UserPokemon> userPokemons) {
         this.userPokemons = userPokemons;
+    }
+
+    public Set<Type> getTypes() {
+        return types;
+    }
+
+    public void setTypes(Set<Type> types) {
+        this.types = types;
+    }
+
+    public Set<Ability> getAbilities() {
+        return abilities;
+    }
+
+    public void setAbilities(Set<Ability> abilities) {
+        this.abilities = abilities;
     }
 }

@@ -7,14 +7,14 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "abitilies")
+@Table(name = "abilities")
 public class Ability {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name",unique = true)
     private String name;
 
     @Column(name = "description")

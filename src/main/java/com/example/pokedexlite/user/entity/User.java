@@ -17,7 +17,7 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER) // si el EAGER falla al cargar los datos, hacerlo Eager
     private Set<UserPokemon> userPokemons;
 
     public Long getId() {
