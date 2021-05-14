@@ -13,6 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,7 +29,8 @@ class PokemonServiceImplTest {
     Type type1;
     Type type2;
     Ability ability1;
-
+    Pokemon evolution1;
+    Pokemon evolution2;
     @BeforeEach
     void setUp() {
         type1 = new Type();
@@ -42,16 +44,40 @@ class PokemonServiceImplTest {
         pokemon.setName("Bulbasaur");
         pokemon.setLevel(1L);
         pokemon.setDescription("Este Pokémon nace con una semilla en el lomo, que brota con el paso del tiempo.");
+
         pokemon.setTypes(new HashSet<>());
         pokemon.getTypes().add(type1);
         pokemon.getTypes().add(type2);
+
          ability1= new Ability();
          ability1.setName("Espesura");
          ability1.setDescription("Potencia sus movimientos de tipo Planta cuando le quedan pocos PS.");
          pokemon.setAbilities(new HashSet<>());
          pokemon.getAbilities().add(ability1);
 
+         /* Ivasaur */
+        evolution1 = new Pokemon();
+        evolution1.setPokemonId(1L);
+        evolution1.setName("Ivasaur");
+        evolution1.setLevel(10L);
+        evolution1.setDescription("Cuando le crece bastante el bulbo del lomo, pierde la capacidad de erguirse sobre las patas traseras.");
+        evolution1.setTypes(new HashSet<>());
+        evolution1.getTypes().add(type1);
+        evolution1.getTypes().add(type2);
+        evolution1.setAbilities(new HashSet<>());
+        evolution1.getAbilities().add(ability1);
 
+        /* Venusaur */
+        evolution2 = new Pokemon();
+        evolution2.setPokemonId(2L);
+        evolution2.setName("Venusaur");
+        evolution2.setLevel(100L);
+        evolution2.setDescription("La planta florece cuando absorbe energía solar, lo cual le obliga a buscar siempre la luz del sol.");
+        evolution2.setTypes(new HashSet<>());
+        evolution2.getTypes().add(type1);
+        evolution2.getTypes().add(type2);
+        evolution2.setAbilities(new HashSet<>());
+        evolution2.getAbilities().add(ability1);
     }
 
     /*
@@ -68,5 +94,14 @@ class PokemonServiceImplTest {
         assertEquals(pokemonBD, pokemon);
         assertTrue(pokemonBD.equalsTypes(pokemon.getTypes()));
     }
-
+    @Test
+    @DisplayName("Given a specific Pokemon’s name, its Abilities and Evolutions are retrieved from the Database.")
+    void findAbilitiesAndEvolutions(){
+        Pokemon pokemonBD = pokemonService.findByName("Bulbasaur");
+        assertTrue(pokemonBD.equalsAbilities(pokemon.getAbilities()));
+        List<Pokemon> pokemonList = pokemonService.evolutions("Bulbasaur");
+        assertEquals(pokemonList.get(0),pokemon);
+        assertEquals(pokemonList.get(1),evolution1);
+        assertEquals(pokemonList.get(2),evolution2);
+    }
 }

@@ -40,6 +40,7 @@ public class PokemonServiceImpl implements IPokemonService{
         Pokemon poke = pokemonBD;
         while (poke != null){
             pokemons.add(poke);
+            poke = poke.getPokemonEvolution();
         }
         return pokemons;
     }
