@@ -134,6 +134,9 @@ class PokemonServiceImplTest {
         assertEquals(metapodBD.getLevel(),metapodLevel);
         assertEquals(metapodBD.getDescription(),metapodDescription);
 
-
+        //TODO: All Pokemons on the Database are listed
+        // hacer un metodo de ordenado por id, para poder hacer assertEqual de cada pokemon
+        //TODO:  Given a specific Pokemon’s name, all its Evolutions and their information (Name, Type/s and Level) are retrieved from the Database.
+        // Lo mismo con los pokemon y sus evoluciones, para el caso particular, comparando el nombre level y los tipos.
     }
 }

@@ -13,7 +13,7 @@ public class PokemonController {
     @Autowired
     IPokemonService pokemonService;
 
-    public boolean listAllPokemon(){
+    public boolean printAllPokemon(){
         List<Pokemon> pokemons=pokemonService.findAll();
         if(pokemons.isEmpty()){
             System.out.println("Data base is Empty");
@@ -32,5 +32,9 @@ public class PokemonController {
             return;
         }
         System.out.println(pokemon);
+    }
+
+    public Pokemon saveNewPokemon(String nombre, int nivel, String descripcion) {
+        return pokemonService.saveNewPokemon(nombre,(long)nivel,descripcion);
     }
 }

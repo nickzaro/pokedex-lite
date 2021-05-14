@@ -43,4 +43,9 @@ public class User {
     public void setUserPokemons(Set<UserPokemon> userPokemons) {
         this.userPokemons = userPokemons;
     }
+
+    @Override
+    public String toString() {
+        return "id=" + id + ", name='" + name;
+    }
 }

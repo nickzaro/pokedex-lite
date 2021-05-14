@@ -17,18 +17,23 @@ public class MyRunner implements CommandLineRunner {
 
     @Autowired
     PokemonController pokemonController;
+
+    @Autowired
+    UserInterface userInterface;
+
     @Override
     public void run(String... args) throws Exception {
 
         System.out.println("My application from command line");
-        Scanner read = new Scanner(System.in);
-        Long num = read.nextLong();
-        System.out.println("My application is finished: " + num);
+        while (userInterface.listOptions()!=UserInterface.SALIR);
+        System.out.println("My application is finished: ");
 
+        /*
         pokemonController.listAllPokemon();
         pokemonController.findByName("juana");
         pokemonController.findByName("Bulbasaur");
 
+         */
 
         System.exit(0);
 
