@@ -8,11 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -89,19 +87,45 @@ class PokemonServiceImplTest {
 
     }
 
+    @Test
+    @DisplayName("Recuperar el nombre del pokemon")
+    void findName() throws PokemonNotFoundException {
+        Pokemon pokemonBD = pokemonService.findByName("Bulbasaur");
+        assertEquals(pokemonBD.getName(), pokemon.getName());
+    }
 
     @Test
-    @DisplayName("Given a specific Pokemon’s name, its Name, Type/s and Level are retrieved from the Database")
-    void findByName() throws PokemonNotFoundException {
+    @DisplayName("Recuperar el nivel pokemon")
+    void findLevel() throws PokemonNotFoundException {
         Pokemon pokemonBD = pokemonService.findByName("Bulbasaur");
-        assertEquals(pokemonBD, pokemon);
+        assertEquals(pokemonBD.getLevel(), pokemon.getLevel());
+    }
+
+    @Test
+    @DisplayName("Recuperar la descripción del pokemon")
+    void findDescription() throws PokemonNotFoundException {
+        Pokemon pokemonBD = pokemonService.findByName("Bulbasaur");
+        assertEquals(pokemonBD.getDescription(), pokemon.getDescription());
+    }
+
+    @Test
+    @DisplayName("Recuperar los tipos del pokemon")
+    void findTypes() throws PokemonNotFoundException {
+        Pokemon pokemonBD = pokemonService.findByName("Bulbasaur");
         assertTrue(pokemonBD.equalsTypes(pokemon.getTypes()));
     }
+
     @Test
-    @DisplayName("Given a specific Pokemon’s name, its Abilities and Evolutions are retrieved from the Database.")
-    void findAbilitiesAndEvolutions() throws PokemonNotFoundException {
+    @DisplayName("Recuperar los tipos del pokemon")
+    void findAbilities() throws PokemonNotFoundException {
         Pokemon pokemonBD = pokemonService.findByName("Bulbasaur");
         assertTrue(pokemonBD.equalsAbilities(pokemon.getAbilities()));
+    }
+
+    @Test
+    @DisplayName("Recuperar las evoluciones del pokemon")
+    void findEvolutions() throws PokemonNotFoundException {
+        Pokemon pokemonBD = pokemonService.findByName("Bulbasaur");
         List<Pokemon> pokemonList = pokemonService.evolutions("Bulbasaur");
         assertEquals(pokemonList.get(0),pokemon);
         assertEquals(pokemonList.get(1),evolution1);
@@ -109,8 +133,8 @@ class PokemonServiceImplTest {
     }
 
     @Test
-    @DisplayName("A new Pokemon can be added (and later retrieved) to the Database.")
-    void addNewRecovery() throws PokemonNotFoundException {
+    @DisplayName("Agregar un pokemon a la BD y recuperar el pokemon")
+    void addNewAndRecovery() throws PokemonNotFoundException {
         Pokemon butterfreeBD = pokemonService.saveNewPokemon("Butterfree",25L,"Aletea a gran velocidad para lanzar al aire sus escamas extremadamente tóxicas.");
         butterfree.setPokemonId(butterfreeBD.getPokemonId()); // agrego la Id asignada por la bd al Pokemon falso.
         assertEquals(butterfreeBD,butterfree);
@@ -118,7 +142,7 @@ class PokemonServiceImplTest {
         assertEquals(otherButterfreeBD,butterfree);
     }
     @Test
-    @DisplayName("A known Pokemon’s information (Name, Type/s or Level) can be updated in the Database.")
+    @DisplayName("Modificar un pokemon de la BD y recuperarlo")
     void updateInformationPokemon() throws PokemonNotFoundException {
         String metapodName = "Metapod";
         Long metapodLevel = 1L;
@@ -134,10 +158,6 @@ class PokemonServiceImplTest {
         assertEquals(metapodBD.getName(),metapodName);
         assertEquals(metapodBD.getLevel(),metapodLevel);
         assertEquals(metapodBD.getDescription(),metapodDescription);
-
-        //TODO: All Pokemons on the Database are listed
-        // hacer un metodo de ordenado por id, para poder hacer assertEqual de cada pokemon
-        //TODO:  Given a specific Pokemon’s name, all its Evolutions and their information (Name, Type/s and Level) are retrieved from the Database.
-        // Lo mismo con los pokemon y sus evoluciones, para el caso particular, comparando el nombre level y los tipos.
     }
+    // TODO: Falta el test "listar todos los pokemons de la BD".
 }
