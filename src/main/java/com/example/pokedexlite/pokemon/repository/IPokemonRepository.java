@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface IPokemonRepository extends CrudRepository<Pokemon,Long> {
 
-    Optional<Pokemon> findByName(String name);
+    Optional<Pokemon> findByNameIgnoreCase(String name);
 
 
 }

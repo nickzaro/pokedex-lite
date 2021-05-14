@@ -3,10 +3,7 @@ package com.example.pokedexlite.pokemon.service;
 import com.example.pokedexlite.pokemon.entity.Pokemon;
 import com.example.pokedexlite.pokemon.exception.PokemonNotFoundException;
 import com.example.pokedexlite.pokemon.repository.IPokemonRepository;
-import com.example.pokedexlite.user.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,7 +26,7 @@ public class PokemonServiceImpl implements IPokemonService{
 
     @Override
     public Pokemon findByName(String name) throws PokemonNotFoundException {
-        Optional<Pokemon> pokemonOptional = pokemonRepository.findByName(name);
+        Optional<Pokemon> pokemonOptional = pokemonRepository.findByNameIgnoreCase(name);
             if(pokemonOptional.isEmpty())
                 throw new PokemonNotFoundException("Pokemon not Found");
             return pokemonOptional.get();

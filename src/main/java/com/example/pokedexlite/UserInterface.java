@@ -20,12 +20,13 @@ public class UserInterface {
 
 
     int listOptions() {
+        System.out.println("---------------------------------------------------");
         System.out.println("------------------Lista de Opciones----------------");
         System.out.println(LISTAR_OPCIONES + " .-Listar todas las opciones");
         System.out.println(LISTAR_USUARIOS + " .-Listar todos los usuarios");
         System.out.println(LISTAR_POKEMONS + " .-Listar todas los pokemons");
-        System.out.println(LISTAR_POKEMONS_POR_USUARIO + " .-Listar los pokemons por usuario");
-        System.out.println(AGREGAR_POKEMON + " .-Editar pokemon");
+        System.out.println(LISTAR_POKEMONS_POR_USUARIO + " .-Pokemons por usuario");
+        System.out.println(AGREGAR_POKEMON + " .-Agregar nuevo pokemon");
         System.out.println(EVOLUCIONES + " .-Evoluciones de un pokemon");
         System.out.println(SALIR + " .-Terminar el programa");
         System.out.print("Ingrese una opción: ");
@@ -75,7 +76,8 @@ public class UserInterface {
 
     private void newPokemon() {
         Scanner read = new Scanner(System.in);
-        System.out.println("newPokemon()");
+
+        System.out.println("------------------Nuevo pokemon----------------");
         System.out.print("Ingrese el Nombre: ");
         String nombre = read.nextLine();
         System.out.print("Ingrese el Nivel: ");
@@ -83,20 +85,21 @@ public class UserInterface {
         read.nextLine(); // para consumir el \n que no hace nextInt
         System.out.print("Ingrese la descripción: ");
         String descripcion = read.nextLine();
-        System.out.println("Los datos son:" + nombre + " " + nivel + " " + descripcion);
         pokemonController.saveNewPokemon(nombre,nivel,descripcion);
+        System.out.println("");
     }
 
     private void userList() {
-        System.out.println("userList()");
+        System.out.println("------------------Lista de Usuarios----------------");
         userController.printAllUser();
     }
 
     private void listPokemonsUser() {
-        System.out.println("\n\nlistPokemonsPorUsuario()");
+        System.out.println("-----------------Pokemons por usuario----------------");
         userController.printAllUser();
         System.out.print("Ingrese el numero de usuario: ");
         userController.printPokemonsUser(inputOption());
+        System.out.println("---------------------------------------------------");
     }
 
     private void opcionFueraDeRango() {
@@ -104,18 +107,18 @@ public class UserInterface {
     }
 
     private void salir() {
-        System.out.println("salir()");
+        System.out.println("Hasta pronto...");
     }
 
     private void listPokemons() {
-        System.out.println("listPokemons()");
+        System.out.println("-----------Lista de todos los pokemons--------------");
         pokemonController.printAllPokemon();
     }
 
     private void evolutionPokemon() {
         Scanner read = new Scanner(System.in);
-        System.out.println("evolutionPokemon()");
-        System.out.print("Ingrese el Nombre: ");
+        System.out.println("-------------Evoluciones de un pokemon---------------");
+        System.out.print("Ingrese el Nombre del pokemon: ");
         String nombre = read.nextLine();
         pokemonController.printEvolutionByName(nombre);
     }

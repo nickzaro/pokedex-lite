@@ -23,19 +23,7 @@ public class MyRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
-        System.out.println("My application from command line");
         while (userInterface.listOptions()!=UserInterface.SALIR);
-        System.out.println("My application is finished: ");
-
-        /*
-        pokemonController.listAllPokemon();
-        pokemonController.findByName("juana");
-        pokemonController.findByName("Bulbasaur");
-
-         */
-
         System.exit(0);
-
     }
 }
