@@ -39,28 +39,28 @@ INSERT INTO `abilities` (id,name,description) VALUES (18,'Agallas','Si sufre un 
 
 /* Pokémons */
 
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (2,'Venusaur',100,'La planta florece cuando absorbe energía solar, lo cual le obliga a buscar siempre la luz del sol.',null);
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (1,'Ivasaur',10,'Cuando le crece bastante el bulbo del lomo, pierde la capacidad de erguirse sobre las patas traseras.',2);
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (0,'Bulbasaur',1,'Este Pokémon nace con una semilla en el lomo, que brota con el paso del tiempo.',1);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (2,'Venusaur',100,'La planta florece cuando absorbe energía solar, lo cual le obliga a buscar siempre la luz del sol.',null);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (1,'Ivasaur',10,'Cuando le crece bastante el bulbo del lomo, pierde la capacidad de erguirse sobre las patas traseras.',2);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (0,'Bulbasaur',1,'Este Pokémon nace con una semilla en el lomo, que brota con el paso del tiempo.',1);
 
 
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (5,'Charizard',200,'Escupe un fuego tan caliente que funde las rocas. Causa incendios forestales sin querer.',null);
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (4,'Charmeleon',20,'Este Pokémon de naturaleza agresiva ataca en combate con su cola llameante y hace trizas al rival con sus afiladas garras.',5);
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (3,'Charmander',2,'Prefiere las cosas calientes. Dicen que cuando llueve le sale vapor de la punta de la cola.',4);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (5,'Charizard',200,'Escupe un fuego tan caliente que funde las rocas. Causa incendios forestales sin querer.',null);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (4,'Charmeleon',20,'Este Pokémon de naturaleza agresiva ataca en combate con su cola llameante y hace trizas al rival con sus afiladas garras.',5);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (3,'Charmander',2,'Prefiere las cosas calientes. Dicen que cuando llueve le sale vapor de la punta de la cola.',4);
 
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (8,'Blastoise',300,'Para acabar con su enemigo, lo aplasta con el peso de su cuerpo. En momentos de apuro, se esconde en el caparazón.',null);
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (7,'Wartortle',30,'Se lo considera un símbolo de longevidad. Los ejemplares más ancianos tienen musgo sobre el caparazón.',8);
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (6,'Squirtle',3,'Cuando retrae su largo cuello en el caparazón, dispara agua a una presión increíble.',7);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (8,'Blastoise',300,'Para acabar con su enemigo, lo aplasta con el peso de su cuerpo. En momentos de apuro, se esconde en el caparazón.',null);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (7,'Wartortle',30,'Se lo considera un símbolo de longevidad. Los ejemplares más ancianos tienen musgo sobre el caparazón.',8);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (6,'Squirtle',3,'Cuando retrae su largo cuello en el caparazón, dispara agua a una presión increíble.',7);
 
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (11,'Pidgeot',400,'Este Pokémon vuela a una velocidad de 2 mach en busca de presas. Sus grandes garras son armas muy peligrosas.',null);
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (10,'Pidgeotto',40,'Su extraordinaria vitalidad y resistencia le permiten cubrir grandes distancias del territorio que habita en busca de presas.',11);
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (9,'Pidgey',4,'Su docilidad es tal que suelen defenderse levantando arena en lugar de contraatacar.',10);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (11,'Pidgeot',400,'Este Pokémon vuela a una velocidad de 2 mach en busca de presas. Sus grandes garras son armas muy peligrosas.',null);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (10,'Pidgeotto',40,'Su extraordinaria vitalidad y resistencia le permiten cubrir grandes distancias del territorio que habita en busca de presas.',11);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (9,'Pidgey',4,'Su docilidad es tal que suelen defenderse levantando arena en lugar de contraatacar.',10);
 
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (13,'Raticate',50,'Gracias a las pequeñas membranas de las patas traseras, puede nadar por los ríos para capturar presas.',null);
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (12,'Rattata',5,'Es propenso a hincar los incisivos en cualquier cosa que se le ponga por delante. Si se ve alguno, seguramente haya cuarenta cerca.',13);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (13,'Raticate',50,'Gracias a las pequeñas membranas de las patas traseras, puede nadar por los ríos para capturar presas.',null);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (12,'Rattata',5,'Es propenso a hincar los incisivos en cualquier cosa que se le ponga por delante. Si se ve alguno, seguramente haya cuarenta cerca.',13);
 
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (15,'Persian',60,'Trabar amistad con este Pokémon es una ardua tarea debido a su enorme orgullo. Cuando algo no le place, saca las uñas de inmediato.',null);
-INSERT INTO `pokemons` (id,name,level,description,id_evolution) VALUES (14,'Meowth',6,'Le encanta reunir objetos brillantes. Cuando está de buen humor, hasta le muestra la colección a su Entrenador.',15);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (15,'Persian',60,'Trabar amistad con este Pokémon es una ardua tarea debido a su enorme orgullo. Cuando algo no le place, saca las uñas de inmediato.',null);
+INSERT INTO `pokemons` (pokemon_id,name,level,description,evolution_id) VALUES (14,'Meowth',6,'Le encanta reunir objetos brillantes. Cuando está de buen humor, hasta le muestra la colección a su Entrenador.',15);
 
 /* Bulbasaur */
 INSERT INTO `pokemon_type` (pokemon_id,type_id) VALUES (0,0);
@@ -138,11 +138,11 @@ INSERT INTO `users` (id,name) VALUES (3,'Bruce');
 
 /* user_pokemon */
 /*John*/
-INSERT INTO `user_pokemon` (id,name,level,pokemon_id,user_id) VALUES (0,'JBulbasaur',2,0,0);
-INSERT INTO `user_pokemon` (id,name,level,pokemon_id,user_id) VALUES (1,'JIvysaur',12,1,0);
-INSERT INTO `user_pokemon` (id,name,level,pokemon_id,user_id) VALUES (2,'JVenusaur',120,2,0);
+INSERT INTO `user_pokemon` (alias,current_level,user_pokemon_id,user_id) VALUES ('JBulbasaur',2,0,0);
+INSERT INTO `user_pokemon` (alias,current_level,user_pokemon_id,user_id) VALUES ('JIvysaur',22,1,0);
+INSERT INTO `user_pokemon` (alias,current_level,user_pokemon_id,user_id) VALUES ('JVenusaur',220,2,0);
 
 /*Linus*/
-INSERT INTO `user_pokemon` (id,name,level,pokemon_id,user_id) VALUES (3,'LCharmander',3,3,1);
-INSERT INTO `user_pokemon` (id,name,level,pokemon_id,user_id) VALUES (4,'LCharmeleon',13,4,1);
-INSERT INTO `user_pokemon` (id,name,level,pokemon_id,user_id) VALUES (5,'LCharizard',130,5,1);
+INSERT INTO `user_pokemon` (alias,current_level,user_pokemon_id,user_id) VALUES ('LCharmander',3,3,1);
+INSERT INTO `user_pokemon` (alias,current_level,user_pokemon_id,user_id) VALUES ('LCharmeleon',30,4,1);
+INSERT INTO `user_pokemon` (alias,current_level,user_pokemon_id,user_id) VALUES ('LCharizard',330,5,1);
