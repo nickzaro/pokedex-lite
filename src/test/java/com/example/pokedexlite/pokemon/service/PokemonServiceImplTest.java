@@ -31,6 +31,7 @@ class PokemonServiceImplTest {
     Ability ability1;
     Pokemon evolution1;
     Pokemon evolution2;
+    Pokemon butterfree;
     @BeforeEach
     void setUp() {
         type1 = new Type();
@@ -78,13 +79,14 @@ class PokemonServiceImplTest {
         evolution2.getTypes().add(type2);
         evolution2.setAbilities(new HashSet<>());
         evolution2.getAbilities().add(ability1);
-    }
 
-    /*
-    @Test
-    void findAll() {
+        /* Butterfree*/
+        butterfree = new Pokemon();
+        butterfree.setName("Butterfree");
+        butterfree.setLevel(25L);
+        butterfree.setDescription("Aletea a gran velocidad para lanzar al aire sus escamas extremadamente tóxicas.");
+
     }
-     */
 
 
     @Test
@@ -103,5 +105,35 @@ class PokemonServiceImplTest {
         assertEquals(pokemonList.get(0),pokemon);
         assertEquals(pokemonList.get(1),evolution1);
         assertEquals(pokemonList.get(2),evolution2);
+    }
+
+    @Test
+    @DisplayName("A new Pokemon can be added (and later retrieved) to the Database.")
+    void addNewRecovery(){
+        Pokemon butterfreeBD = pokemonService.saveNewPokemon("Butterfree",25L,"Aletea a gran velocidad para lanzar al aire sus escamas extremadamente tóxicas.");
+        butterfree.setPokemonId(butterfreeBD.getPokemonId()); // agrego la Id asignada por la bd al Pokemon falso.
+        assertEquals(butterfreeBD,butterfree);
+        Pokemon otherButterfreeBD = pokemonService.findByName("Butterfree"); // recuperando el pokemon agregado en la bd usando el nombre.
+        assertEquals(otherButterfreeBD,butterfree);
+    }
+    @Test
+    @DisplayName("A known Pokemon’s information (Name, Type/s or Level) can be updated in the Database.")
+    void updateInformationPokemon(){
+        String metapodName = "Metapod";
+        Long metapodLevel = 1L;
+        String metapodDescription ="Como en este estado solo puede endurecer su coraza, permanece inmóvil a la espera de evolucionar.";
+        Long metapodId = 0L; // es el id de bulbasaur en la BD
+        Pokemon bulbasaurBD = pokemonService.findByName("Bulbasaur"); //busco en la BD
+        bulbasaurBD.setName(metapodName);
+        bulbasaurBD.setLevel(metapodLevel);
+        bulbasaurBD.setDescription(metapodDescription);
+        pokemonService.save(bulbasaurBD); // Guardo los cambios en la BD
+        Pokemon metapodBD = pokemonService.findByName("Metapod"); // Busco por el nuevo nombre
+        assertEquals(metapodBD.getPokemonId(),metapodId);
+        assertEquals(metapodBD.getName(),metapodName);
+        assertEquals(metapodBD.getLevel(),metapodLevel);
+        assertEquals(metapodBD.getDescription(),metapodDescription);
+
+
     }
 }

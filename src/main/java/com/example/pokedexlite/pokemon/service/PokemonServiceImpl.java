@@ -44,4 +44,20 @@ public class PokemonServiceImpl implements IPokemonService{
         }
         return pokemons;
     }
+
+    @Override
+    public Pokemon save(Pokemon pokemon) {
+        pokemon= pokemonRepository.save(pokemon);
+        return pokemon;
+    }
+
+    @Override
+    public Pokemon saveNewPokemon(String name, Long level, String description) {
+        Pokemon newPokemon = new Pokemon();
+        newPokemon.setName(name);
+        newPokemon.setLevel(level);
+        newPokemon.setDescription(description);
+        newPokemon=save(newPokemon);
+        return newPokemon;
+    }
 }
