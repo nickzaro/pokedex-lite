@@ -10,7 +10,8 @@ import java.util.Scanner;
 @Component
 public class UserInterface {
 
-    static final int SALIR = 0, LISTAR_OPCIONES = 1, LISTAR_USUARIOS = 2, LISTAR_POKEMONS = 3, LISTAR_POKEMONS_POR_USUARIO = 4, AGREGAR_POKEMON = 5;
+    static final int SALIR = 0, LISTAR_OPCIONES = 1, LISTAR_USUARIOS = 2, LISTAR_POKEMONS = 3,
+            LISTAR_POKEMONS_POR_USUARIO = 4, AGREGAR_POKEMON = 5, EVOLUCIONES = 6;
 
     @Autowired
     PokemonController pokemonController;
@@ -25,6 +26,7 @@ public class UserInterface {
         System.out.println(LISTAR_POKEMONS + " .-Listar todas los pokemons");
         System.out.println(LISTAR_POKEMONS_POR_USUARIO + " .-Listar los pokemons por usuario");
         System.out.println(AGREGAR_POKEMON + " .-Editar pokemon");
+        System.out.println(EVOLUCIONES + " .-Evoluciones de un pokemon");
         System.out.println(SALIR + " .-Terminar el programa");
         System.out.print("Ingrese una opción: ");
         return evaluateOption(inputOption());
@@ -56,6 +58,10 @@ public class UserInterface {
 
             case AGREGAR_POKEMON:
                 newPokemon();
+                break;
+
+            case EVOLUCIONES:
+                evolutionPokemon();
                 break;
 
             case SALIR:
@@ -104,5 +110,13 @@ public class UserInterface {
     private void listPokemons() {
         System.out.println("listPokemons()");
         pokemonController.printAllPokemon();
+    }
+
+    private void evolutionPokemon() {
+        Scanner read = new Scanner(System.in);
+        System.out.println("evolutionPokemon()");
+        System.out.print("Ingrese el Nombre: ");
+        String nombre = read.nextLine();
+        pokemonController.printEvolutionByName(nombre);
     }
 }

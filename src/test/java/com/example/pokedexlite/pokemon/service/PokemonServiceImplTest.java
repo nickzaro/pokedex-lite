@@ -2,6 +2,7 @@ package com.example.pokedexlite.pokemon.service;
 
 import com.example.pokedexlite.ability.entity.Ability;
 import com.example.pokedexlite.pokemon.entity.Pokemon;
+import com.example.pokedexlite.pokemon.exception.PokemonNotFoundException;
 import com.example.pokedexlite.type.entity.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -91,14 +92,14 @@ class PokemonServiceImplTest {
 
     @Test
     @DisplayName("Given a specific Pokemon’s name, its Name, Type/s and Level are retrieved from the Database")
-    void findByName() {
+    void findByName() throws PokemonNotFoundException {
         Pokemon pokemonBD = pokemonService.findByName("Bulbasaur");
         assertEquals(pokemonBD, pokemon);
         assertTrue(pokemonBD.equalsTypes(pokemon.getTypes()));
     }
     @Test
     @DisplayName("Given a specific Pokemon’s name, its Abilities and Evolutions are retrieved from the Database.")
-    void findAbilitiesAndEvolutions(){
+    void findAbilitiesAndEvolutions() throws PokemonNotFoundException {
         Pokemon pokemonBD = pokemonService.findByName("Bulbasaur");
         assertTrue(pokemonBD.equalsAbilities(pokemon.getAbilities()));
         List<Pokemon> pokemonList = pokemonService.evolutions("Bulbasaur");
@@ -109,7 +110,7 @@ class PokemonServiceImplTest {
 
     @Test
     @DisplayName("A new Pokemon can be added (and later retrieved) to the Database.")
-    void addNewRecovery(){
+    void addNewRecovery() throws PokemonNotFoundException {
         Pokemon butterfreeBD = pokemonService.saveNewPokemon("Butterfree",25L,"Aletea a gran velocidad para lanzar al aire sus escamas extremadamente tóxicas.");
         butterfree.setPokemonId(butterfreeBD.getPokemonId()); // agrego la Id asignada por la bd al Pokemon falso.
         assertEquals(butterfreeBD,butterfree);
@@ -118,7 +119,7 @@ class PokemonServiceImplTest {
     }
     @Test
     @DisplayName("A known Pokemon’s information (Name, Type/s or Level) can be updated in the Database.")
-    void updateInformationPokemon(){
+    void updateInformationPokemon() throws PokemonNotFoundException {
         String metapodName = "Metapod";
         Long metapodLevel = 1L;
         String metapodDescription ="Como en este estado solo puede endurecer su coraza, permanece inmóvil a la espera de evolucionar.";
