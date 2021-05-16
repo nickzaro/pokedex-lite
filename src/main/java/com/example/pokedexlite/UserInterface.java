@@ -11,13 +11,14 @@ import java.util.Scanner;
 public class UserInterface {
 
     static final int SALIR = 0, LISTAR_OPCIONES = 1, LISTAR_USUARIOS = 2, LISTAR_POKEMONS = 3,
-            LISTAR_POKEMONS_POR_USUARIO = 4, AGREGAR_POKEMON = 5, EVOLUCIONES = 6;
+            LISTAR_POKEMONS_POR_USUARIO = 4, BUSCAR_POKEMON = 5,AGREGAR_POKEMON = 6, EVOLUCIONES = 7;
 
     @Autowired
     PokemonController pokemonController;
     @Autowired
     UserController userController;
 
+    Scanner read = new Scanner(System.in);
 
     int listOptions() {
         System.out.println("---------------------------------------------------");
@@ -26,6 +27,7 @@ public class UserInterface {
         System.out.println(LISTAR_USUARIOS + " .-Listar todos los usuarios");
         System.out.println(LISTAR_POKEMONS + " .-Listar todas los pokemons");
         System.out.println(LISTAR_POKEMONS_POR_USUARIO + " .-Pokemons por usuario");
+        System.out.println(BUSCAR_POKEMON + " .-Buscar pokemon por el nombre");
         System.out.println(AGREGAR_POKEMON + " .-Agregar nuevo pokemon");
         System.out.println(EVOLUCIONES + " .-Evoluciones de un pokemon");
         System.out.println(SALIR + " .-Terminar el programa");
@@ -68,6 +70,10 @@ public class UserInterface {
             case SALIR:
                 salir();
                 break;
+
+            case BUSCAR_POKEMON:
+                buscarPokemon();
+                break;
             default:
                 opcionFueraDeRango();
         }
@@ -75,8 +81,6 @@ public class UserInterface {
     }
 
     private void newPokemon() {
-        Scanner read = new Scanner(System.in);
-
         System.out.println("------------------Nuevo pokemon----------------");
         System.out.print("Ingrese el Nombre: ");
         String nombre = read.nextLine();
@@ -116,10 +120,17 @@ public class UserInterface {
     }
 
     private void evolutionPokemon() {
-        Scanner read = new Scanner(System.in);
+
         System.out.println("-------------Evoluciones de un pokemon---------------");
         System.out.print("Ingrese el Nombre del pokemon: ");
         String nombre = read.nextLine();
         pokemonController.printEvolutionByName(nombre);
+    }
+
+    private void buscarPokemon() {
+        System.out.println("-------------Buscar un pokemon por su nombre---------------");
+        System.out.print("Ingrese el Nombre del pokemon: ");
+        String nombre = read.nextLine();
+        pokemonController.findByName(nombre);
     }
 }

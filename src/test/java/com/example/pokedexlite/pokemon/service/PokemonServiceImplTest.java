@@ -116,7 +116,7 @@ class PokemonServiceImplTest {
     }
 
     @Test
-    @DisplayName("Recuperar los tipos del pokemon")
+    @DisplayName("Recuperar las habilidades del pokemon")
     void findAbilities() throws PokemonNotFoundException {
         Pokemon pokemonBD = pokemonService.findByName("Bulbasaur");
         assertTrue(pokemonBD.equalsAbilities(pokemon.getAbilities()));
