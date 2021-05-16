@@ -61,4 +61,9 @@ public class Ability {
         return this.getName().equals(ability.getName())
                 && this.getDescription().equals(ability.getDescription());
     }
+
+    @Override
+    public String toString() {
+        return "name=" + name + ", description=" + description;
+    }
 }

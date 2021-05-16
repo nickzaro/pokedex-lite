@@ -5,6 +5,7 @@ import com.example.pokedexlite.user.controller.UserController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 @Component
@@ -37,7 +38,13 @@ public class UserInterface {
 
     int inputOption() {
         Scanner read = new Scanner(System.in);
-        int numero = read.nextInt();
+        int numero = 0;
+        try {
+             numero = read.nextInt();
+        }catch (InputMismatchException e){
+            System.out.println("Opción invalida, vuelva a ingresar la opción");
+            numero = 1;
+        }
         return numero;
     }
 
@@ -128,9 +135,9 @@ public class UserInterface {
     }
 
     private void buscarPokemon() {
-        System.out.println("-------------Buscar un pokemon por su nombre---------------");
+        System.out.println("------Buscar un pokemon, habilidades, y tipos---------");
         System.out.print("Ingrese el Nombre del pokemon: ");
         String nombre = read.nextLine();
-        pokemonController.findByName(nombre);
+        pokemonController.findByNameFull(nombre);
     }
 }

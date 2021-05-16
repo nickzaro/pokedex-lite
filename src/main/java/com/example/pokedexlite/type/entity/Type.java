@@ -61,4 +61,9 @@ public class Type {
         return this.getName().equals(type.getName())
                 && this.getDescription().equals(type.getDescription());
     }
+
+    @Override
+    public String toString() {
+        return "name=" + name + ", description=" + description;
+    }
 }
