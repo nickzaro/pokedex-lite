@@ -42,12 +42,4 @@ public class UserPokemon extends Pokemon{
     public void setCurrentLevel(Long currentLevel) {
         this.currentLevel = currentLevel;
     }
-
-    /*
-    @Override
-    public String toString() {
-        return super.toString() + "  - "+
-                "alias='" + alias + ", currentLevel=" + currentLevel;
-    }
-     */
 }

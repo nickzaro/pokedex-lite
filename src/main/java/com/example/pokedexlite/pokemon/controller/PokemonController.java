@@ -6,7 +6,6 @@ import com.example.pokedexlite.pokemon.exception.PokemonNotFoundException;
 import com.example.pokedexlite.pokemon.service.IPokemonService;
 import com.example.pokedexlite.type.entity.Type;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -22,7 +21,7 @@ public class PokemonController {
             System.out.println("Data base is Empty");
             return false;
         }
-        pokemons.forEach(System.out::println);
+        pokemons.forEach(this::printPokemon);
         return true;
     }
 
@@ -34,7 +33,7 @@ public class PokemonController {
             System.out.println("Not found pokemon: " + name);
             return;
         }
-        System.out.println(pokemon);
+        printPokemon(pokemon);
     }
 
     public Pokemon saveNewPokemon(String nombre, int nivel, String descripcion) {
@@ -52,7 +51,7 @@ public class PokemonController {
             return;
         }
         for (Pokemon pokemon: pokemonList) {
-            System.out.println(pokemon);
+            printPokemon(pokemon);
         }
     }
 
@@ -64,7 +63,7 @@ public class PokemonController {
             System.out.println("Not found pokemon: " + name);
             return;
         }
-        System.out.println(pokemon);
+        printPokemon(pokemon);
         System.out.println("---Habilidades del pokemon---" );
         printAbilitiesPokemon(pokemon);
         System.out.println("---Tipos del pokemon---");
@@ -81,5 +80,9 @@ public class PokemonController {
         for (Ability ability: pokemon.getAbilities()){
             System.out.println(ability);
         }
-    };
+    }
+
+    private void printPokemon(Pokemon pokemon){
+        System.out.println("id: " + pokemon.getPokemonId() + " |name: " + pokemon.getName() + " |level: "+ pokemon.getLevel() + " | description: " + pokemon.getDescription());
+    }
 }

@@ -64,6 +64,6 @@ public class Ability {
 
     @Override
     public String toString() {
-        return "name=" + name + ", description=" + description;
+        return "name: " + name + " | description: " + description;
     }
 }

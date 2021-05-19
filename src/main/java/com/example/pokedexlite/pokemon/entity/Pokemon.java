@@ -114,7 +114,7 @@ public class Pokemon {
 
     @Override
     public String toString() {
-        return "pokemonId=" + pokemonId + ", name= " + name  + ", level=" + level + ", description='" + description;
+        return "id: " + pokemonId + "| name: " + name  + "| level: " + level + "| description=: " + description;
     }
 
     @Override
