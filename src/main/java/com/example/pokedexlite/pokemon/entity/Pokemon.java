@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity(name = "pokemons")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Pokemon {
 
     @Id
@@ -47,6 +46,9 @@ public class Pokemon {
             inverseJoinColumns = @JoinColumn(name = "ability_id")
     )
     Set<Ability> abilities;
+
+    @OneToMany(mappedBy = "pokemon",fetch = FetchType.EAGER) // si el EAGER falla al cargar los datos, hacerlo Eager
+    private Set<UserPokemon> userPokemons;
 
     public Long getPokemonId() {
         return pokemonId;
@@ -110,6 +112,14 @@ public class Pokemon {
 
     public void setAbilities(Set<Ability> abilities) {
         this.abilities = abilities;
+    }
+
+    public Set<UserPokemon> getUserPokemons() {
+        return userPokemons;
+    }
+
+    public void setUserPokemons(Set<UserPokemon> userPokemons) {
+        this.userPokemons = userPokemons;
     }
 
     @Override

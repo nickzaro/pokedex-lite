@@ -138,11 +138,11 @@ INSERT INTO `users` (id,name) VALUES (3,'Bruce');
 
 /* user_pokemon */
 /*John*/
-INSERT INTO `user_pokemon` (alias,current_level,user_pokemon_id,user_id) VALUES ('JBulbasaur',2,0,0);
-INSERT INTO `user_pokemon` (alias,current_level,user_pokemon_id,user_id) VALUES ('JIvysaur',22,1,0);
-INSERT INTO `user_pokemon` (alias,current_level,user_pokemon_id,user_id) VALUES ('JVenusaur',220,2,0);
+INSERT INTO `user_pokemon` (user_pokemon_id,alias,current_level,pokemon_id,user_id) VALUES (0,'JBulbasaur',2,0,0);
+INSERT INTO `user_pokemon` (user_pokemon_id,alias,current_level,pokemon_id,user_id) VALUES (1,'JIvysaur',22,1,0);
+INSERT INTO `user_pokemon` (user_pokemon_id,alias,current_level,pokemon_id,user_id) VALUES (2,'JVenusaur',220,2,0);
 
 /*Linus*/
-INSERT INTO `user_pokemon` (alias,current_level,user_pokemon_id,user_id) VALUES ('LCharmander',3,3,1);
-INSERT INTO `user_pokemon` (alias,current_level,user_pokemon_id,user_id) VALUES ('LCharmeleon',30,4,1);
-INSERT INTO `user_pokemon` (alias,current_level,user_pokemon_id,user_id) VALUES ('LCharizard',330,5,1);
+INSERT INTO `user_pokemon` (user_pokemon_id,alias,current_level,pokemon_id,user_id) VALUES (3,'LCharmander',3,3,1);
+INSERT INTO `user_pokemon` (user_pokemon_id,alias,current_level,pokemon_id,user_id) VALUES (4,'LCharmeleon',30,4,1);
+INSERT INTO `user_pokemon` (user_pokemon_id,alias,current_level,pokemon_id,user_id) VALUES (5,'LCharizard',330,5,1);

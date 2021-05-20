@@ -38,9 +38,9 @@ public class UserController {
             printUserPokemon(userPokemon);
         }
     }
-    private void printUserPokemon(UserPokemon userPokemon){
-        System.out.println("id usuario: " + userPokemon.getUser().getId() + " |name: " + userPokemon.getName()
-                + " |level: "+ userPokemon.getLevel() + " |description: " + userPokemon.getDescription()
+    private void printUserPokemon(UserPokemon userPokemon){ //TODO: chequear que necesites UserPokemon y no pokemon
+        System.out.println("id usuario: " + userPokemon.getUser().getId() + " |name: " + userPokemon.getPokemon().getName()
+                + " |level: "+ userPokemon.getPokemon().getLevel() + " |description: " + userPokemon.getPokemon().getDescription()
                 +" |alias: "+ userPokemon.getAlias() + " |current level: " + userPokemon.getCurrentLevel());
     }
 
