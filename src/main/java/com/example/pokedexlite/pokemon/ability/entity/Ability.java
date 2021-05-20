@@ -1,4 +1,4 @@
-package com.example.pokedexlite.type.entity;
+package com.example.pokedexlite.pokemon.ability.entity;
 
 
 import com.example.pokedexlite.pokemon.entity.Pokemon;
@@ -7,8 +7,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "types")
-public class Type {
+@Table(name = "abilities")
+public class Ability {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Type {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "types")
+    @ManyToMany(mappedBy = "abilities")
     Set<Pokemon> pokemons;
 
     public Long getId() {
@@ -57,9 +57,9 @@ public class Type {
 
     @Override
     public boolean equals(Object obj) {
-        Type type = (Type)obj;
-        return this.getName().equals(type.getName())
-                && this.getDescription().equals(type.getDescription());
+        Ability ability = (Ability)obj;
+        return this.getName().equals(ability.getName())
+                && this.getDescription().equals(ability.getDescription());
     }
 
     @Override

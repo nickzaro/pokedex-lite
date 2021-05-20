@@ -1,7 +1,7 @@
 package com.example.pokedexlite.pokemon.entity;
 
-import com.example.pokedexlite.ability.entity.Ability;
-import com.example.pokedexlite.type.entity.Type;
+import com.example.pokedexlite.pokemon.ability.entity.Ability;
+import com.example.pokedexlite.pokemon.type.entity.Type;
 import com.example.pokedexlite.userpokemon.entity.UserPokemon;
 
 import javax.persistence.*;

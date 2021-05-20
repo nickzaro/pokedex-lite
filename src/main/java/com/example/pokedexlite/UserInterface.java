@@ -2,6 +2,7 @@ package com.example.pokedexlite;
 
 import com.example.pokedexlite.pokemon.controller.PokemonController;
 import com.example.pokedexlite.user.controller.UserController;
+import com.example.pokedexlite.userpokemon.controller.UserPokemonController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,9 @@ public class UserInterface {
     PokemonController pokemonController;
     @Autowired
     UserController userController;
+
+    @Autowired
+    UserPokemonController userPokemonController;
 
     Scanner read = new Scanner(System.in);
 
@@ -84,6 +88,7 @@ public class UserInterface {
                 break;
             case AGREGAR_POKEMON_A_USUARIO:
                 newUserPokemon();
+                break;
             default:
                 opcionFueraDeRango();
         }
@@ -92,7 +97,17 @@ public class UserInterface {
 
     private void newUserPokemon() {
         System.out.println("------------------Agregar nuevo pokemon ( Usuario )----------------");
-
+        userController.printAllUser();
+        System.out.print("Ingrese el id de usuario: ");
+        int user_id = read.nextInt();
+        read.nextLine();
+        pokemonController.printAllPokemon();
+        System.out.print("Ingrese el id del pokemon: ");
+        int pokemon_id = read.nextInt();
+        read.nextLine();
+        System.out.print("Ingrese el alias del pokemon: ");
+        String alias = read.nextLine();
+        userPokemonController.save(user_id,pokemon_id,alias);
     }
 
     private void newPokemon() {

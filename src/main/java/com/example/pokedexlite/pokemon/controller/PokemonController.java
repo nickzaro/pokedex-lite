@@ -1,10 +1,10 @@
 package com.example.pokedexlite.pokemon.controller;
 
-import com.example.pokedexlite.ability.entity.Ability;
+import com.example.pokedexlite.pokemon.ability.entity.Ability;
 import com.example.pokedexlite.pokemon.entity.Pokemon;
 import com.example.pokedexlite.pokemon.exception.PokemonNotFoundException;
 import com.example.pokedexlite.pokemon.service.IPokemonService;
-import com.example.pokedexlite.type.entity.Type;
+import com.example.pokedexlite.pokemon.type.entity.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface IPokemonService {
     public List<Pokemon> findAll();
+    public Pokemon findById(Long id) throws PokemonNotFoundException;
     public Pokemon findByName(String name) throws PokemonNotFoundException;
     public List<Pokemon> evolutions(String name) throws PokemonNotFoundException;
     public Pokemon save(Pokemon pokemon);
