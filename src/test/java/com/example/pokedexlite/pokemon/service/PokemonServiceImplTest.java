@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -159,5 +157,20 @@ class PokemonServiceImplTest {
         assertEquals(metapodBD.getLevel(),metapodLevel);
         assertEquals(metapodBD.getDescription(),metapodDescription);
     }
-    // TODO: Falta el test "listar todos los pokemons de la BD".
+
+    @Test
+    @DisplayName("Listar todos los pokemons guardados")
+    void listAllPokemons() throws PokemonNotFoundException {
+
+
+        List<Pokemon> pokemons = pokemonService.findAll();
+        pokemons.sort(Comparator.comparing(Pokemon::getPokemonId)); // ordeno por id
+        int i = 0;
+        String[] nombres = {"Bulbasaur","Ivasaur","Venusaur","Charmander","Charmeleon","Charizard","Squirtle","Wartortle"
+        ,"Blastoise","Pidgey","Pidgeotto","Pidgeot","Rattata","Raticate","Meowth","Persian"};
+        while(i<pokemons.size()){
+            assertEquals(pokemons.get(i).getName(),nombres[i]);
+            i++;
+        }
+    }
 }

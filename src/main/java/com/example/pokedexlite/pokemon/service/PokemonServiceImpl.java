@@ -35,7 +35,7 @@ public class PokemonServiceImpl implements IPokemonService{
     @Override
     public List<Pokemon> evolutions(String name) throws PokemonNotFoundException {
         List<Pokemon> pokemons = new ArrayList<>();
-        Pokemon pokemonBD = this.findByName(name); //TODO: Controlar la exception
+        Pokemon pokemonBD = this.findByName(name);
         if(pokemonBD==null)
             throw new PokemonNotFoundException("Pokemon not Found");
         Pokemon poke = pokemonBD;

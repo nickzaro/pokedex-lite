@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class UserInterface {
 
     static final int SALIR = 0, LISTAR_OPCIONES = 1, LISTAR_USUARIOS = 2, LISTAR_POKEMONS = 3,
-            LISTAR_POKEMONS_POR_USUARIO = 4, BUSCAR_POKEMON = 5,AGREGAR_POKEMON = 6, AGREGAR_POKEMON_A_USUARIO=7, EVOLUCIONES = 8;
+            LISTAR_POKEMONS_POR_USUARIO = 4, BUSCAR_POKEMON = 5,AGREGAR_POKEMON = 6, AGREGAR_POKEMON_A_USUARIO=8, EVOLUCIONES = 7;
 
     @Autowired
     PokemonController pokemonController;
@@ -30,7 +30,7 @@ public class UserInterface {
         System.out.println(LISTAR_POKEMONS_POR_USUARIO + " .-Pokemons por usuario");
         System.out.println(BUSCAR_POKEMON + " .-Buscar pokemon por el nombre");
         System.out.println(AGREGAR_POKEMON + " .-Agregar nuevo pokemon ( Global )");
-        System.out.println(AGREGAR_POKEMON_A_USUARIO + " .-Agregar nuevo pokemon ( Usuario )");
+        //System.out.println(AGREGAR_POKEMON_A_USUARIO + " .-Agregar nuevo pokemon ( Usuario )");
         System.out.println(EVOLUCIONES + " .-Evoluciones de un pokemon");
         System.out.println(SALIR + " .-Terminar el programa");
         System.out.print("Ingrese una opción: ");
