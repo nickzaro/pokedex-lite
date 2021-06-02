@@ -5,19 +5,58 @@
     <title th:text="${title}"></title>
 </head>
 <body>
-<ul th:id="type-list">
-    <div th:each="type: ${types}">
-        <li th:id="${type.getId()}" th:text="${type.getName()}" ></li>
-        <button th:onclick="addTypePokemon([[${type.getName()}]])">add</button>
+
+<form th:action="@{add/}" method="post" th:object="${pokemon}">
+    <input type="hidden" th:field="*{pokemonId}"/>
+    <input type="hidden" th:field="*{pokemonEvolution}"/>
+    <div>
+        <label>Name: </label>
+        <input type="text" th:field="*{name}"/>
+    </div>
+    <div>
+        <label>Level: </label>
+        <input type="text" th:field="*{level}"/>
+    </div>
+    <div>
+        <label>Description: </label>
+        <input type="text" th:field="*{description}"/>
     </div>
 
+    <ul>
+        <li th:each="type : ${allTypes}">
+            <div >
+                <input type="checkbox" th:field="*{types}" th:value="${type.id}">
+                <label th:text="${type.name}"></label>
+            </div>
+        </li>
+    </ul>
+    <br/>
+    <ul>
+        <li th:each="ability : ${allAbilities}">
+            <div >
+                <input type="checkbox" th:field="*{abilities}" th:value="${ability.id}">
+                <label th:text="${ability.name}"></label>
+            </div>
+        </li>
+    </ul>
 
-</ul>
+    <ul>
+        <li th:each="ability : ${allAbilities}">
+            <div >
+                <input type="checkbox" th:field="*{abilities}" th:value="${ability.id}">
+                <label th:text="${ability.name}"></label>
+            </div>
+        </li>
+    </ul>
 
-<script type="text/javascript">
-    function addTypePokemon(name) {
-        console.log(name)
-    }
-</script>
+
+
+
+
+    <div class="field">
+        <button class="ui button" type="submit">Submit</button>
+    </div>
+</form>
+
 </body>
 </html>
