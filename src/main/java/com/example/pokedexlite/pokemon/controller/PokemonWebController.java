@@ -38,6 +38,9 @@ public class PokemonWebController {
         List<Ability> abilities = abilityService.findAll();
         List<Type> types = typeService.findAll();
         List<Pokemon> pokemons = pokemonService.findAll();
+        Pokemon pokemonvacio = new Pokemon();
+        pokemonvacio.setName("opcion null");
+        pokemons.add(pokemonvacio); // si se quiere una opcion extra vacia
         model.addAttribute("title","New Pokemon");
         model.addAttribute("allAbilities", abilities);
         model.addAttribute("allTypes",types);

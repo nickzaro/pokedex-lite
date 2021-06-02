@@ -8,7 +8,6 @@
 
 <form th:action="@{add/}" method="post" th:object="${pokemon}">
     <input type="hidden" th:field="*{pokemonId}"/>
-    <input type="hidden" th:field="*{pokemonEvolution}"/>
     <div>
         <label>Name: </label>
         <input type="text" th:field="*{name}"/>
@@ -40,17 +39,11 @@
         </li>
     </ul>
 
-    <ul>
-        <li th:each="ability : ${allAbilities}">
-            <div >
-                <input type="checkbox" th:field="*{abilities}" th:value="${ability.id}">
-                <label th:text="${ability.name}"></label>
-            </div>
-        </li>
-    </ul>
+    <select  th:field="*{pokemonEvolution}">
 
-
-
+        <option th:each="pokemon: ${allPokemons}" th:value="${pokemon.pokemonId}" th:text="${pokemon.getName()}">
+        </option>
+    </select>
 
 
     <div class="field">
