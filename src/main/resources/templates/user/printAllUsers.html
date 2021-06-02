@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <br/>
+            <h3 th:text="${title}"></h3>
+
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+
+                    <th scope="col">nombre</th>
+                    <th scope="col">listar</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user: ${users}">
+                    <!-- <td th:text="${entrenador.getId()}"></td> -->
+                    <td th:text="${user.getName()}"></td>
+                    <td><a th:href="@{'/user/'+${user.getId()}+'/pokemons/'}" class="btn btn-primary active">to list</a></td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

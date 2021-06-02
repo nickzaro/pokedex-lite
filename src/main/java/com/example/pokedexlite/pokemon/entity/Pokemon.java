@@ -5,6 +5,7 @@ import com.example.pokedexlite.pokemon.type.entity.Type;
 import com.example.pokedexlite.userpokemon.entity.UserPokemon;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "pokemons")
@@ -37,7 +38,7 @@ public class Pokemon {
             joinColumns = @JoinColumn(name = "pokemon_id"),
             inverseJoinColumns = @JoinColumn(name = "type_id")
     )
-    Set<Type> types;
+    Set<Type> types = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -45,10 +46,10 @@ public class Pokemon {
             joinColumns = @JoinColumn(name = "pokemon_id"),
             inverseJoinColumns = @JoinColumn(name = "ability_id")
     )
-    Set<Ability> abilities;
+    Set<Ability> abilities = new HashSet<>();
 
     @OneToMany(mappedBy = "pokemon",fetch = FetchType.EAGER) // si el EAGER falla al cargar los datos, hacerlo Eager
-    private Set<UserPokemon> userPokemons;
+    private Set<UserPokemon> userPokemons = new HashSet<>();
 
     public Long getPokemonId() {
         return pokemonId;
