@@ -40,7 +40,7 @@ public class PokemonWebController {
         List<Pokemon> pokemons = pokemonService.findAll();
         Pokemon pokemonvacio = new Pokemon();
         pokemonvacio.setName("opcion null");
-        pokemons.add(pokemonvacio); // si se quiere una opcion extra vacia
+        pokemons.add(0,pokemonvacio); // si se quiere una opcion extra vacia
         model.addAttribute("title","New Pokemon");
         model.addAttribute("allAbilities", abilities);
         model.addAttribute("allTypes",types);

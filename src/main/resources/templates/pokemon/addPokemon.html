@@ -40,7 +40,6 @@
     </ul>
 
     <select  th:field="*{pokemonEvolution}">
-
         <option th:each="pokemon: ${allPokemons}" th:value="${pokemon.pokemonId}" th:text="${pokemon.getName()}">
         </option>
     </select>
