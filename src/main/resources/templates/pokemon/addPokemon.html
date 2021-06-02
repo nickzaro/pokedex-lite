@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+</head>
+<body>
+<ul th:id="type-list">
+    <div th:each="type: ${types}">
+        <li th:id="${type.getId()}" th:text="${type.getName()}" ></li>
+        <button th:onclick="addTypePokemon([[${type.getName()}]])">add</button>
+    </div>
+
+
+</ul>
+
+<script type="text/javascript">
+    function addTypePokemon(name) {
+        console.log(name)
+    }
+</script>
+</body>
+</html>
