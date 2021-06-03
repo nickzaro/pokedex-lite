@@ -20,7 +20,7 @@ public class UserWebController {
 
     @GetMapping({"/",""})
     public String printAllUsers(Model model){
-        model.addAttribute("title","All users");
+        model.addAttribute("title","Todos los usuarios");
         model.addAttribute("users",userService.findAll());
         return "user/printAllUsers";
     }

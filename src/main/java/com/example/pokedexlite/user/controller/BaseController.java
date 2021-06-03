@@ -9,7 +9,7 @@ import java.util.List;
 public class BaseController {
 
     @GetMapping({"/", ""})
-    public String redireccionando() {
+    public String redirect() {
         return "redirect:user/";
     }
 }
