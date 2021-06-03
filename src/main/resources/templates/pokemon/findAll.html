@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <head th:replace="layout/layout :: head"></head>
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<div class="container">
+    <h3 th:text="${title}"></h3>
+    <br/>
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>nombre</th>
+            <th>nivel</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pokemon: ${pokemones}">
+            <td th:text="${pokemon.getPokemonId()}"></td>
+            <td th:text="${pokemon.getName()}"></td>
+            <td th:text="${pokemon.getLevel()}"></td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+</body>
+</html>

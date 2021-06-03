@@ -52,4 +52,13 @@ public class PokemonWebController {
         pokemonService.save(pokemon);
         return "pokemon/addPokemon";
     }
+
+    @GetMapping({"/",""})
+    public String findAll(Model model){
+        List<Pokemon> pokemones = pokemonService.findAll();
+        model.addAttribute("title","Lista de pokemones");
+        model.addAttribute("pokemones", pokemones);
+        return "pokemon/findAll";
+    }
+
 }
