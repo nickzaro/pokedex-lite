@@ -12,7 +12,7 @@
             <br/>
             <h3 th:text="${title}"></h3>
 
-            <table class="table table-striped">
+            <table >
                 <thead class="thead-dark">
                 <tr>
 
@@ -24,7 +24,7 @@
                 <tr th:each="user: ${users}">
                     <!-- <td th:text="${entrenador.getId()}"></td> -->
                     <td th:text="${user.getName()}"></td>
-                    <td><a th:href="@{'/user/'+${user.getId()}+'/pokemons/'}" class="btn btn-primary active">to list</a></td>
+                    <td><a th:href="@{'/user/'+${user.getId()}+'/pokemons/'}" class="btn btn-primary active">Detalles</a></td>
                 </tr>
                 </tbody>
 
