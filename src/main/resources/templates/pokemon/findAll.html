@@ -21,6 +21,7 @@
             <td th:text="${pokemon.getPokemonId()}"></td>
             <td th:text="${pokemon.getName()}"></td>
             <td th:text="${pokemon.getLevel()}"></td>
+            <td><a th:href="@{'/pokemon/'+${pokemon.getPokemonId()}}" th:text="listar" class="btn btn-primary active"></a></td>
         </tr>
         </tbody>
 
