@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <head th:replace="layout/layout :: head"></head>
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<div class="container">
+    <h3 th:text="${title}"></h3>
+    <br/>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ability: ${abilities}">
+            <td th:text="${ability.getId()}"></td>
+            <td th:text="${ability.getName()}"></td>
+            <td th:text="${ability.getDescription()}"></td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+</body>
+</html>

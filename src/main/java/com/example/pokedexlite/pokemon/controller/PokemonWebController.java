@@ -4,6 +4,7 @@ import com.example.pokedexlite.pokemon.ability.entity.Ability;
 import com.example.pokedexlite.pokemon.ability.repository.IAbilityRepository;
 import com.example.pokedexlite.pokemon.ability.service.IAbilityService;
 import com.example.pokedexlite.pokemon.entity.Pokemon;
+import com.example.pokedexlite.pokemon.exception.PokemonNotFoundException;
 import com.example.pokedexlite.pokemon.repository.IPokemonRepository;
 import com.example.pokedexlite.pokemon.service.IPokemonService;
 import com.example.pokedexlite.pokemon.type.entity.Type;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -34,14 +36,12 @@ public class PokemonWebController {
 
     @GetMapping("/add")
     public String addPokemon(Model model){
+        // TODO: pasar solo pokemones que no tengan asignado un pokemon base.
         Pokemon pokemon = new Pokemon();
         List<Ability> abilities = abilityService.findAll();
         List<Type> types = typeService.findAll();
         List<Pokemon> pokemons = pokemonService.findAll();
-        Pokemon pokemonvacio = new Pokemon();
-        pokemonvacio.setName("opcion null");
-        pokemons.add(0,pokemonvacio); // si se quiere una opcion extra vacia
-        model.addAttribute("title","New Pokemon");
+        model.addAttribute("title","Nuevo pokemon");
         model.addAttribute("allAbilities", abilities);
         model.addAttribute("allTypes",types);
         model.addAttribute("allPokemons",pokemons);
@@ -51,25 +51,29 @@ public class PokemonWebController {
 
     @PostMapping("/add")
     public String saveNewPokemon(Pokemon pokemon){
-        System.out.println("ID: " + pokemon.getPokemonId());
-        System.out.println("Nombre: " + pokemon.getName());
-        System.out.println("Nivel: " + pokemon.getLevel());
-        System.out.println("Evolución ID: " + pokemon.getPokemonEvolution());
-
-        System.out.println("cantidad de tipos: " + pokemon.getTypes().size());
-        for( Type type: pokemon.getTypes()){
-            System.out.println(type.getId());
-            System.out.println(type.getName());
-            System.out.println(type.getDescription());
-        }
-        System.out.println("cantidad de habilidades: " + pokemon.getTypes().size());
-        for( Ability ability: pokemon.getAbilities()){
-            System.out.println(ability.getId());
-            System.out.println(ability.getName());
-            System.out.println(ability.getDescription());
-        }
         pokemonService.save(pokemon);
-
         return "pokemon/addPokemon";
     }
+
+    @GetMapping({"/",""})
+    public String findAll(Model model){
+        List<Pokemon> pokemones = pokemonService.findAll();
+        model.addAttribute("title","Lista de pokemones");
+        model.addAttribute("pokemones", pokemones);
+        return "pokemon/findAll";
+    }
+
+    @GetMapping("/{id}")
+    public String findById(@PathVariable(value = "id") Long id, Model model) {
+        Pokemon pokemon = null;
+        try {
+            pokemon = pokemonService.findById(id);
+        } catch (PokemonNotFoundException e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("title", "Datos del pokemon");
+        model.addAttribute("pokemon", pokemon);
+        return "pokemon/findById";
+    }
+
 }

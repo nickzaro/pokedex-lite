@@ -1,54 +1,61 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title th:text="${title}"></title>
+    <head th:replace="layout/layout :: head"></head>
 </head>
 <body>
+<header th:replace="layout/layout :: header"></header>
+<br/>
+<div class="container">
+    <h3 th:text="${title}"></h3>
+    <form th:action="@{add/}" method="post" th:object="${pokemon}">
+        <input type="hidden" th:field="*{pokemonId}"/>
+        <div>
+            <label>Name: </label>
+            <input type="text" th:field="*{name}"/>
+        </div>
+        <div>
+            <label>Level: </label>
+            <input type="number" min="1" th:field="*{level}"/>
+        </div>
+        <div>
+            <label>Description: </label>
+            <input type="text" th:field="*{description}"/>
+        </div>
+        <br>
+        <p>Seleccione el/los tipo/s:</p>
+        <ul>
+            <li th:each="type : ${allTypes}">
+                <div>
+                    <input type="checkbox" th:field="*{types}" th:value="${type.id}">
+                    <label th:text="${type.name}"></label>
+                </div>
+            </li>
+        </ul>
+        <br/>
+        <p>Seleccione la/las Habilidades:</p>
+        <ul>
+            <li th:each="ability : ${allAbilities}">
+                <div>
+                    <input type="checkbox" th:field="*{abilities}" th:value="${ability.id}">
+                    <label th:text="${ability.name}"></label>
+                </div>
+            </li>
+        </ul>
 
-<form th:action="@{add/}" method="post" th:object="${pokemon}">
-    <input type="hidden" th:field="*{pokemonId}"/>
-    <div>
-        <label>Name: </label>
-        <input type="text" th:field="*{name}"/>
-    </div>
-    <div>
-        <label>Level: </label>
-        <input type="text" th:field="*{level}"/>
-    </div>
-    <div>
-        <label>Description: </label>
-        <input type="text" th:field="*{description}"/>
-    </div>
-
-    <ul>
-        <li th:each="type : ${allTypes}">
-            <div >
-                <input type="checkbox" th:field="*{types}" th:value="${type.id}">
-                <label th:text="${type.name}"></label>
+        <p>Seleccione el pokemon al que evoluciona:</p>
+        <div>
+            <div th:each="pokemon: ${allPokemons}">
+                <input type="radio" th:id="${pokemon.pokemonId}" th:value="${pokemon.pokemonId}" th:field="*{pokemonEvolution}">
+                <label th:for="${pokemon.pokemonId}" th:text="${pokemon.getName()}"></label>
+                <br>
             </div>
-        </li>
-    </ul>
-    <br/>
-    <ul>
-        <li th:each="ability : ${allAbilities}">
-            <div >
-                <input type="checkbox" th:field="*{abilities}" th:value="${ability.id}">
-                <label th:text="${ability.name}"></label>
-            </div>
-        </li>
-    </ul>
-
-    <select  th:field="*{pokemonEvolution}">
-        <option th:each="pokemon: ${allPokemons}" th:value="${pokemon.pokemonId}" th:text="${pokemon.getName()}">
-        </option>
-    </select>
-
-
-    <div class="field">
-        <button class="ui button" type="submit">Submit</button>
-    </div>
-</form>
-
+        </div>
+        <br/>
+        <div class="field">
+            <button class="ui button" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>

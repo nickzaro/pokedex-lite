@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <head th:replace="layout/layout :: head"></head>
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<br/>
+<div class="container">
+    <h3 th:text="${title}"></h3>
+    <div>
+        <label>Id: </label>
+        <label th:text="${pokemon.getPokemonId()}"></label>
+    </div>
+    <div>
+        <label>Nombre: </label>
+        <label th:text="${pokemon.getName()}"></label>
+    </div>
+    <div>
+        <label>Nombre: </label>
+        <label th:text="${pokemon.getDescription()}"></label>
+    </div>
+
+    <div th:if="${pokemon.getPokemonEvolution() != null}">
+        <label>Evoluciona a: </label>
+
+        <label th:text="${pokemon.getPokemonEvolution().getName()}"></label>
+    </div>
+    <br/>
+
+
+    <p>Tipos:</p>
+    <ul>
+        <li th:each="type : ${pokemon.getTypes()}">
+            <div>
+                <label th:text="${type.name}"></label>
+            </div>
+        </li>
+    </ul>
+    <br/>
+
+    <p>Habilidades:</p>
+    <ul>
+        <li th:each="ability : ${pokemon.getAbilities()}">
+            <div>
+                <label th:text="${ability.name}"></label>
+            </div>
+        </li>
+    </ul>
+    <br/>
+</div>
+</body>
+</html>
