@@ -20,6 +20,11 @@
         <label>Nombre: </label>
         <label th:text="${pokemon.getDescription()}"></label>
     </div>
+
+    <div>
+        <label>Evoluciona a: </label>
+        <label th:text="${pokemon.getPokemonEvolution().getName()}"></label>
+    </div>
     <br/>
 
 
