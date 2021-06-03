@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class PokemonServiceImplTest {
 
     @Autowired
-    //@Qualifier("pokemonservice")
     private IPokemonService pokemonService;
     Pokemon pokemon;
     Type type1;
