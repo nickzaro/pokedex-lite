@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title th:text="${title}"></title>
+    <head th:replace="layout/layout :: head"></head>
 </head>
 <body>
-<h1 th:text="${title}"></h1>
+<header th:replace="layout/layout :: header"></header>
 <br/>
-<div>
-  <label>ID: </label>
-  <label th:text="${user.getId()}"></label>
+<div class="container">
+    <h3 th:text="${title}"></h3>
+    <br/>
+    <div>
+        <label>ID: </label>
+        <label th:text="${user.getId()}"></label>
+    </div>
+    <div>
+        <label>Nombre: </label>
+        <label th:text="${user.getName()}"></label>
+    </div>
+    <br/>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Nivel Actual</th>
+            <th>Tipos</th>
+            <th>Habilidades</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="userPokemon: ${user.getUserPokemons()}">
+            <td th:text="${userPokemon.getPokemon().getName()}"></td>
+            <td th:text="${userPokemon.getCurrentLevel()}"></td>
+            <td>
+                <dl th:each="type: ${userPokemon.getPokemon().getTypes()}">
+                    <dd th:text="${type.getName()}"></dd>
+                </dl>
+
+            </td>
+            <td>
+                <dl th:each="ability: ${userPokemon.getPokemon().getAbilities()}">
+                    <dd th:text="${ability.getName()}"></dd>
+                </dl>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
-<div>
-  <label>Nombre: </label>
-  <label th:text="${user.getName()}"></label>
-</div>
-<br/>
-
-<table border="3" cellspacing="10" cellpadding="10">
-  <thead>
-  <tr>
-    <th>Nombre</th>
-    <th>Nivel Actual</th>
-    <th>Tipos</th>
-    <th>Habilidades</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="userPokemon: ${user.getUserPokemons()}">
-    <td th:text="${userPokemon.getPokemon().getName()}"></td>
-    <td th:text="${userPokemon.getCurrentLevel()}"></td>
-    <td>
-      <dl th:each="type: ${userPokemon.getPokemon().getTypes()}">
-        <dd th:text="${type.getName()}"></dd>
-      </dl>
-
-    </td>
-    <td>
-      <dl th:each="ability: ${userPokemon.getPokemon().getAbilities()}">
-        <dd th:text="${ability.getName()}"></dd>
-      </dl>
-
-    </td>
-  </tr>
-  </tbody>
-</table>
 </body>
 </html>
